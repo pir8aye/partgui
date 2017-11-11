@@ -68,6 +68,14 @@
   width: 144px;
 }
 
+.nijntje {
+  display: inline-block;
+  background-image: url("../assets/nijntje.png");
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 144px;
+}
+
 
 /deep/ input {
   &.verify-sucess {
