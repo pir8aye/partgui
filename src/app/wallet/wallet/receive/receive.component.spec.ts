@@ -3,12 +3,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MdPaginatorModule, MdTabsModule, MdSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { QRCodeModule } from 'angular2-qrcode';
+import { RpcModule } from '../../../core/rpc/rpc.module';
+import { SharedModule } from '../../shared/shared.module';
 
-import { CoreModule } from '../../../core/core.module';
-import { ModalsModule } from '../../../modals/modals.module';
-
-import { SharedModule } from '../../shared/shared.module';  // is this even needed?
+import { ModalsService } from '../../modals/modals.service';
+import { FlashNotificationService } from '../../services/flash-notification.service';
+import { IpcService } from '../../../core/ipc/ipc.service';
 
 import { ReceiveComponent } from './receive.component';
 
@@ -28,13 +30,16 @@ describe('ReceiveComponent', () => {
         MdTabsModule,
         MdSnackBarModule,
         BrowserAnimationsModule,
-        MdPaginatorModule,  // is this even needed, Core-ui?
+        MdPaginatorModule,
         /* own */
-        SharedModule,  // is this even needed?
-        CoreModule.forRoot(),
-        ModalsModule.forRoot()
+        SharedModule,
+        RpcModule.forRoot()
       ],
-      providers: [ ]
+      providers: [
+        ModalsService,
+        FlashNotificationService,
+        IpcService
+      ]
     })
     .compileComponents();
   }));

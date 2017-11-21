@@ -6,8 +6,9 @@ import { RpcModule } from '../../../../core/rpc/rpc.module';
 import { WalletModule } from '../../wallet.module';
 import { SharedModule } from '../../../shared/shared.module';
 
-import { SnackbarService } from '../../../../core/snackbar/snackbar.service';
-import { ModalsService } from '../../../../modals/modals.service';
+import { ModalsService } from '../../../modals/modals.service';
+import { IpcService } from '../../../../core/ipc/ipc.service';
+
 
 import { SignatureAddressModalComponent } from './signature-address-modal.component';
 
@@ -18,12 +19,12 @@ describe('SignatureAddressModalComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        SharedModule,  // is this even needed?
-        WalletModule, // is this even needed?
-        CoreModule.forRoot(),
-        MdSnackBarModule  // is this even needed, import Core-UI instead?
+        SharedModule,
+        WalletModule,
+        RpcModule.forRoot(),
+        MdSnackBarModule
       ],
-      providers: [SnackbarService, ModalsService]
+      providers: [FlashNotificationService, ModalsService, IpcService]
     })
       .compileComponents();
   }));

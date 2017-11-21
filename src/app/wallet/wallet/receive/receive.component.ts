@@ -7,8 +7,8 @@ import { RpcService } from '../../../core/core.module';
 import { AddAddressLabelComponent } from './modals/add-address-label/add-address-label.component';
 import { SignatureAddressModalComponent } from '../shared/signature-address-modal/signature-address-modal.component';
 
-import { ModalsService } from '../../../modals/modals.service';
-import { SnackbarService } from '../../../core/snackbar/snackbar.service';
+import { ModalsService } from '../../modals/modals.service';
+import { FlashNotificationService } from '../../services/flash-notification.service';
 
 @Component({
   selector: 'app-receive',
@@ -47,7 +47,7 @@ export class ReceiveComponent implements OnInit {
   constructor(private rpc: RpcService,
               public dialog: MdDialog,
               public _modalService: ModalsService,
-              private flashNotificationService: SnackbarService) {
+              private flashNotificationService: FlashNotificationService) {
   }
 
   ngOnInit() {
